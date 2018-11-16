@@ -15,18 +15,26 @@ public class RainfallProgram {
 			if("end".equals(line)) {
 				break;
 			}
-			
-			// TODO: parse the measurement and add it to stats
-			
-			// TODO: print a message if the measurement is negative
-			
-			// TODO: print a message if the measurement cannot be parsed
+			try {
+				double number = Double.parseDouble(line);
+				if (number < 0) {
+					System.out.println("Invalid number entered, cannot input negative numbers");
+				} else {
+					stats.addMeasurement(number);
+					System.out.println("Added " + number + " measurement");
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("Invalid number entered, please try again");
+			}
 		}
 		
 		System.out.println(stats.getCount() + " measurement(s) entered.");
-		
-		// TODO: prevent the exception when no measurements have been entered.
-		System.out.println("Mean rainfall: " + stats.getMean() + " mm");
-		System.out.println("Maximum rainfall: " + stats.getMax() + " mm");
+
+		try {
+			System.out.println("Mean rainfall: " + stats.getMean() + " mm");
+			System.out.println("Maximum rainfall: " + stats.getMax() + " mm");
+		} catch (IllegalStateException e) {
+			System.out.println("No measurements have been added, cannot print mean and maximum");
+		}
 	}
 }
