@@ -5,7 +5,7 @@ public class RainfallStats {
 
     private final List<Double> entries = new ArrayList<>();
 
-    public void addMeasurement(double entry) {
+    public void addMeasurement(double entry) throws InvalidRainfallException {
         if (entry < 0) {
             throw new InvalidRainfallException("Cannot add negative measurement " + entry);
         }

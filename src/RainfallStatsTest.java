@@ -49,7 +49,7 @@ public class RainfallStatsTest {
 	 * if the measurement is negative.
 	 */
 	@Test(expected = InvalidRainfallException.class)
-	public void testAddInvalidMeasurement() {
+	public void testAddInvalidMeasurement() throws InvalidRainfallException {
 		stats.addMeasurement(-10.0);
 	}
 	
